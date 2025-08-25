@@ -6,8 +6,6 @@ let scores1 = 0;
 const player0 = document.querySelector(".player--0");
 const playerl = document.querySelector(".player--1");
 
-newGame();
-
 function rollDice() {
   num = Math.trunc(Math.random() * 6) + 1;
   document.querySelector(".dice").src = `./images/Dice-${num}.png`;
