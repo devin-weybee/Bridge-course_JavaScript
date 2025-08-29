@@ -164,15 +164,6 @@ button {
       gap: 8px;
       align-items: center;
       font-size: 12px;
-
-      .fa-xmark {
-        margin-left: auto;
-        display: none;
-      }
-
-      .fa-xmark:hover {
-        cursor: pointer;
-      }
     }
   }
 }
@@ -181,10 +172,15 @@ button {
   text-decoration: none;
 }
 
-.card-list p:hover {
-  .fa-xmark {
-    display: block;
-  }
+.card-list p .fa-xmark,
+.card-list p .fa-pen-to-square {
+  margin-left: auto;
+  display: none; /* Hidden by default */
+}
+
+.card-list p:hover .fa-xmark,
+.card-list p:hover .fa-pen-to-square {
+  display: inline-block;
 }
 
 input[type="checkbox"] {

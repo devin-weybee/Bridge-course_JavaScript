@@ -42,6 +42,7 @@ cardContainer.addEventListener("click", function (e) {
     const task = `
       <p class="textToStrikethrough">
         <input type="checkbox" class="myCheck" /> ${taskValue}
+        <i class="fa-solid fa-pen-to-square"></i>
         <i class="fa-solid fa-xmark delete-icon"></i>
       </p>`;
 
@@ -55,6 +56,23 @@ cardContainer.addEventListener("click", function (e) {
 
   if (e.target.classList.contains("fa-trash")) {
     e.target.parentElement.parentElement.remove();
+  }
+
+  // Edit functionality
+  if (e.target.classList.contains("fa-pen-to-square")) {
+    const taskParagraph = e.target.parentElement; // <p> element
+    const taskTextNode = taskParagraph.childNodes[2]; // Text node after checkbox
+    const currentText = taskTextNode.textContent.trim();
+
+    // Find the task input in the same card
+    const cardBody = e.target.closest(".card-body");
+    const taskInput = cardBody.querySelector(".task-input");
+
+    // Put current text in input for editing
+    taskInput.value = currentText;
+
+    // Remove the old task line from the list
+    taskParagraph.remove();
   }
 });
 
@@ -106,6 +124,7 @@ addNewListCard.addEventListener("keypress", function (e) {
               taskValue
                 ? `<p class="textToStrikethrough">
                      <input type="checkbox" class="myCheck" /> ${taskValue}
+                     <i class="fa-solid fa-pen-to-square"></i>
                      <i class="fa-solid fa-xmark delete-icon"></i>
                    </p>`
                 : ""
@@ -154,7 +173,7 @@ sortSelect.addEventListener("change", function () {
     });
   } else if (sortValue === "Oldest") {
     cards.sort((a, b) => {
-      console.log(a.dataset)
+      console.log(a.dataset);
       return new Date(a.dataset.date) - new Date(b.dataset.date);
     });
   } else if (sortValue === "Newest") {
@@ -206,3 +225,24 @@ function showAll() {
   const sortSelect = document.querySelector("select");
   sortSelect.value = "Sort";
 }
+
+// document.addEventListener('click', function (e) {
+//   if (e.target.classList.contains('fa-pen-to-square')) {
+//     const taskText = e.target.parentElement;
+//     const currentText = taskText.childNodes[2].textContent.trim();
+
+//     const input = document.createElement('input');
+//     input.type = 'text';
+//     input.value = currentText;
+//     input.classList.add('edit-input');
+
+//     taskText.childNodes[2].replaceWith(input);
+
+//     input.focus();
+
+//     input.addEventListener('blur', function () {
+//       const newText = input.value.trim() || currentText;
+//       input.replaceWith(document.createTextNode(' ' + newText));
+//     });
+//   }
+// });
