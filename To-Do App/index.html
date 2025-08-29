@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/f89ba4205e.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./style.css" />
+    <title>To-Do App</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="header-nav">
+        <i class="fa-regular fa-square-check"></i>
+        <h2>To-Do App</h2>
+      </div>
+
+      <!-- main-body  -->
+      <div class="main-body">
+        <!-- welcome-header  -->
+        <div class="welcome-header">
+          <h1>Hello, Devin !</h1>
+          <div class="data-temp">
+            <h3 class="show-date">Tue, Feb 27</h3>
+            <h3><i class="fa-solid fa-temperature-full"></i>67 C</h3>
+          </div>
+        </div>
+        <div class="add-new-list">
+          <button class="add-new-list-btn">+ Add New List</button>
+          <input type="text" placeholder="Search" class="search-bar" value="">
+          <button onclick="showAll()" class="show-all">Show All</button>
+          <select name="Sort" id="">
+            <option value="Sort">Sort</option>
+            <option value="A-Z">A-Z</option>
+            <option value="Z-A">Z-A</option>
+            <option value="Oldest">Oldest</option>
+            <option value="Newest">Newest</option>
+          </select>
+        </div>
+        <div class="card-container">
+          <div class="card">
+            <div class="card-head">
+              <h3>Daily To-do</h3>
+              <i class="fa-solid fa-trash"></i>
+            </div>
+            <div class="card-body">
+              <h6><i class="fa-regular fa-calendar"></i> Today</h6>
+              <div class="card-list">
+                <p class="textToStrikethrough">
+                  <input type="checkbox" class="myCheck" /> Stay Positive
+                  <i class="fa-solid fa-xmark"></i>
+                </p>
+              </div>
+              <div class="add-task">
+                <input
+                  type="text"
+                  class="task-input"
+                  placeholder="Add Your Task"
+                />
+                <button class="add-task-btn">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="add-new-list-card card">
+            <div class="card-content">
+              <input type="text" class="title-input" placeholder="Add Title" />
+              <div class="date-section">
+                <input type="date" class="date-input" placeholder="Due To" />
+              </div>
+              <div class="add-task">
+                <input type="text" placeholder="Add Your Task" />
+                <button class="add-task-btn">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
