@@ -113,7 +113,7 @@ button {
 
 .card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 300px));
   gap: 1.5rem;
   margin-top: 2rem;
 }
@@ -121,7 +121,7 @@ button {
 .card {
   height: auto;
   width: 100%;
-  max-width: 80%;
+  max-width: 300px;
   border: 2px solid black;
   border-radius: 8px;
   padding-right: 10px;
@@ -360,7 +360,7 @@ input[type="checkbox"] {
   font-size: 0.9rem;
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .add-new-list-card {
     padding: 0.8rem;
   }
@@ -389,7 +389,65 @@ input[type="checkbox"] {
   .card-container {
     grid-template-columns: 1fr;
   }
+} */
+
+@media (max-width: 600px) {
+  .main-body {
+    width: 95%;
+    margin-top: 1rem;
+  }
+
+  .welcome-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .data-temp {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  /* ✅ Fix: card width */
+  .card-container {
+    grid-template-columns: 1fr;
+    justify-items: center;   /* center cards */
+  }
+
+  .card {
+    max-width: 90%;   /* don’t stretch edge-to-edge */
+    width: 100%;
+  }
+
+  /* ✅ Fix: search bar width */
+  .add-new-list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .add-new-list .search-bar {
+    width: 100%;     /* make search bar full width */
+    margin: 0;       /* remove side margins */
+  }
+
+  .show-all,
+  .add-new-list-btn,
+  select {
+    width: 100%;     /* buttons & dropdown full width too */
+  }
+
+  .add-task {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .add-task input,
+  .add-task button {
+    width: 100%;
+  }
 }
+
 
 @media (min-width: 601px) and (max-width: 1024px) {
   .card-container {
