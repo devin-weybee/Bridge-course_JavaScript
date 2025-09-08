@@ -42,8 +42,10 @@ cardContainer.addEventListener("click", function (e) {
     const task = `
       <p class="textToStrikethrough">
         <input type="checkbox" class="myCheck" /> ${taskValue}
-        <i class="fa-solid fa-pen-to-square"></i>
-        <i class="fa-solid fa-xmark delete-icon"></i>
+        <span class="actions">
+          <i class="fa-solid fa-pen-to-square"></i>
+          <i class="fa-solid fa-xmark delete-icon"></i>
+        </span>
       </p>`;
 
     cardList.insertAdjacentHTML("afterbegin", task);
@@ -51,7 +53,7 @@ cardContainer.addEventListener("click", function (e) {
   }
 
   if (e.target.classList.contains("delete-icon")) {
-    e.target.parentElement.remove();
+    e.target.closest("p").remove();
   }
 
   if (e.target.classList.contains("fa-trash")) {
@@ -60,18 +62,15 @@ cardContainer.addEventListener("click", function (e) {
 
   // Edit functionality
   if (e.target.classList.contains("fa-pen-to-square")) {
-    const taskParagraph = e.target.parentElement; // <p> element
-    const taskTextNode = taskParagraph.childNodes[2]; // Text node after checkbox
+    const taskParagraph = e.target.closest("p");  // <p> element
+    const taskTextNode = taskParagraph.childNodes[2];// Text node after checkbox
     const currentText = taskTextNode.textContent.trim();
 
     // Find the task input in the same card
     const cardBody = e.target.closest(".card-body");
     const taskInput = cardBody.querySelector(".task-input");
 
-    // Put current text in input for editing
     taskInput.value = currentText;
-
-    // Remove the old task line from the list
     taskParagraph.remove();
   }
 });
@@ -124,8 +123,10 @@ addNewListCard.addEventListener("keypress", function (e) {
               taskValue
                 ? `<p class="textToStrikethrough">
                      <input type="checkbox" class="myCheck" /> ${taskValue}
-                     <i class="fa-solid fa-pen-to-square"></i>
-                     <i class="fa-solid fa-xmark delete-icon"></i>
+                     <span class="actions">
+                      <i class="fa-solid fa-pen-to-square"></i>
+                      <i class="fa-solid fa-xmark delete-icon"></i>
+                     </span>
                    </p>`
                 : ""
             }

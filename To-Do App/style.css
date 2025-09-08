@@ -170,18 +170,36 @@ button {
 
 .textToStrikethrough {
   text-decoration: none;
+
+  i{
+    margin-left: auto;
+  }
 }
 
-.card-list p .fa-xmark,
+.textToStrikethrough .actions {
+  margin-left: auto;      
+  display: flex;
+  gap: 6px;              /
+}
+
+.textToStrikethrough .actions i {
+  display: none;         
+}
+
+.textToStrikethrough:hover .actions i {
+  display: inline-block;  
+}
+
+/* .card-list p .fa-xmark,
 .card-list p .fa-pen-to-square {
   margin-left: auto;
-  display: none; /* Hidden by default */
+  display: none; 
 }
 
 .card-list p:hover .fa-xmark,
 .card-list p:hover .fa-pen-to-square {
   display: inline-block;
-}
+} */
 
 input[type="checkbox"] {
   accent-color: black;
